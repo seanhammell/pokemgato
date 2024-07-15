@@ -1,2 +1,2 @@
 #!/bin/bash
-find -E . -regex '.*\.(cpp|hpp)' -exec clang-format -style=Google -i {} \; -exec cpplint {} \;
+find -E . -regex '.*\.(cc|h)' -exec clang-format -style=Google -i {} \; -exec cpplint {} \;
