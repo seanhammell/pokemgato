@@ -7,17 +7,18 @@
 
 namespace engine {
 
-bool Graphics::kInstantiated = false;
-
-Graphics::Graphics() : window_(nullptr), renderer_(nullptr) {
-  assert(!kInstantiated);
-  kInstantiated = Init();
-  if (!kInstantiated) {
-    Destroy();
-  }
+Graphics& Graphics::GetInstance() {
+  static Graphics kInstance;
+  return kInstance;
 }
 
 Graphics::~Graphics() { Destroy(); }
+
+Graphics::Graphics() : window_(nullptr), renderer_(nullptr) {
+  if (!Init()) {
+    Destroy();
+  }
+}
 
 bool Graphics::Init() {
   if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -60,7 +61,6 @@ void Graphics::Destroy() {
 
   renderer_ = nullptr;
   window_ = nullptr;
-  kInstantiated = false;
 }
 
 }  // namespace engine

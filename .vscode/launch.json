@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "PokéMGato",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceRoot}/build/pokemgato",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": ".",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb",
+    }
+  ]
+}

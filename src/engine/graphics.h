@@ -13,7 +13,8 @@ class Graphics {
   static constexpr int kRendererLogicalWidth = 240;
   static constexpr int kRendererLogicalHeight = 160;
 
-  Graphics();
+  static Graphics &GetInstance();
+
   Graphics(const Graphics &) = delete;
   Graphics operator=(const Graphics &) = delete;
   ~Graphics();
@@ -22,13 +23,11 @@ class Graphics {
   SDL_Renderer *renderer_;
 
  private:
+  Graphics();
+
   bool Init();
   void Destroy();
-
-  static bool kInstantiated;
 };
-
-extern Graphics kGraphics;
 
 }  // namespace engine
 
