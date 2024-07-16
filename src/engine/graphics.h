@@ -19,14 +19,17 @@ class Graphics {
   Graphics operator=(const Graphics &) = delete;
   ~Graphics();
 
-  SDL_Window *window_;
-  SDL_Renderer *renderer_;
+  void Clear();
+  void Present();
 
  private:
   Graphics();
 
   bool Init();
   void Destroy();
+
+  SDL_Window *window_;
+  SDL_Renderer *renderer_;
 };
 
 }  // namespace engine

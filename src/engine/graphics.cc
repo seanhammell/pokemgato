@@ -14,6 +14,13 @@ Graphics& Graphics::GetInstance() {
 
 Graphics::~Graphics() { Destroy(); }
 
+void Graphics::Clear() {
+  SDL_SetRenderDrawColor(renderer_, 0x00, 0x00, 0x00, 0xFF);
+  SDL_RenderClear(renderer_);
+}
+
+void Graphics::Present() { SDL_RenderPresent(renderer_); }
+
 Graphics::Graphics() : window_(nullptr), renderer_(nullptr) {
   if (!Init()) {
     Destroy();
