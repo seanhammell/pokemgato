@@ -1,6 +1,5 @@
 #include "src/engine/graphics.h"
 
-#include <assert.h>
 #include <stdio.h>
 
 #include "SDL2/SDL.h"
@@ -13,6 +12,10 @@ Graphics& Graphics::GetInstance() {
 }
 
 Graphics::~Graphics() { Destroy(); }
+
+SDL_Texture *Graphics::CreateTextureFromSurface(SDL_Surface *surface) {
+  return SDL_CreateTextureFromSurface(renderer_, surface);
+}
 
 void Graphics::Clear() {
   SDL_SetRenderDrawColor(renderer_, 0x00, 0x00, 0x00, 0xFF);
@@ -62,12 +65,17 @@ bool Graphics::Init() {
 }
 
 void Graphics::Destroy() {
-  SDL_DestroyRenderer(renderer_);
-  SDL_DestroyWindow(window_);
-  SDL_Quit();
+  if (renderer_) {
+    SDL_DestroyRenderer(renderer_);
+    renderer_ = nullptr;
+  }
 
-  renderer_ = nullptr;
-  window_ = nullptr;
+  if (window_) {
+    SDL_DestroyWindow(window_);
+    window_ = nullptr;
+  }
+
+  SDL_Quit();
 }
 
 }  // namespace engine

@@ -17,7 +17,10 @@ class Graphics {
 
   Graphics(const Graphics &) = delete;
   Graphics operator=(const Graphics &) = delete;
+
   ~Graphics();
+
+  SDL_Texture *CreateTextureFromSurface(SDL_Surface *surface);
 
   void Clear();
   void Present();
