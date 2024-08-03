@@ -13,8 +13,13 @@ Graphics& Graphics::GetInstance() {
 
 Graphics::~Graphics() { Destroy(); }
 
-SDL_Texture *Graphics::CreateTextureFromSurface(SDL_Surface *surface) {
+SDL_Texture* Graphics::CreateTextureFromSurface(SDL_Surface* surface) {
   return SDL_CreateTextureFromSurface(renderer_, surface);
+}
+
+void Graphics::RenderTexture(const Texture& texture, const int x, const int y) {
+  SDL_Rect dest = {x, y, texture.GetWidth(), texture.GetHeight()};
+  SDL_RenderCopy(renderer_, texture.GetTexture(), nullptr, &dest);
 }
 
 void Graphics::Clear() {

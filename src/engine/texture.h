@@ -14,6 +14,10 @@ class Texture {
 
   ~Texture();
 
+  SDL_Texture *GetTexture() const;
+  int GetWidth() const;
+  int GetHeight() const;
+
  private:
   bool Init(SDL_Surface *surface);
   void Destroy();

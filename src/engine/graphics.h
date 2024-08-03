@@ -2,6 +2,7 @@
 #define SRC_ENGINE_GRAPHICS_H_
 
 #include "SDL2/SDL.h"
+#include "src/engine/texture.h"
 
 namespace engine {
 
@@ -21,6 +22,7 @@ class Graphics {
   ~Graphics();
 
   SDL_Texture *CreateTextureFromSurface(SDL_Surface *surface);
+  void RenderTexture(const Texture &texture, const int x, const int y);
 
   void Clear();
   void Present();
